@@ -17,7 +17,7 @@ public class Puzblemanager : MonoBehaviour {
         initialstate = new Puzzblestate(initialvalues);
         initialstate.action = "Root";
         initialstate.depth = 0;
-
+		
 		curretstate = initialstate;
 	}
 	
