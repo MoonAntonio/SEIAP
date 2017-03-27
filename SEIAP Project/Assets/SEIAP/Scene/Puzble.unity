@@ -126,6 +126,7 @@ MonoBehaviour:
     y: 0
     action: 
     depth: 0
+  victoria: 0
 --- !u!4 &44984738
 Transform:
   m_ObjectHideFlags: 0

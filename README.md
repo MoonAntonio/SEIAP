@@ -15,6 +15,12 @@ while nor frontier.isEmpty()
 
 	state = frontier.Remove()
 
+	if(goalTest(state) = goalState) return SUCCES
+
+	foreach child in state.childs
+
+		
+
 	...
 
 ```
