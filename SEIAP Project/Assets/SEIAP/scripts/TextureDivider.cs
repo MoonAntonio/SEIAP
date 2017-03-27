@@ -20,7 +20,7 @@ public class TextureDivider : MonoBehaviour
         GameObject spritesRoot = GameObject.Find("SpritesRoot");
         slices = new Sprite[9];
         width = source.width / 3;
-         height = source.height / 3;
+        height = source.height / 3;
 
         for (int i = 0; i < 3; i++)
         {
@@ -47,6 +47,7 @@ public class TextureDivider : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
         GameObject go = GameObject.Find("Tile" + i);
+        go.transform.RotateAround(transform.position,Vector3.forward,180); 
             if (go)
             {
                 Image sr = go.GetComponent<Image>();

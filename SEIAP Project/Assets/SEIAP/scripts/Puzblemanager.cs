@@ -12,6 +12,8 @@ public class Puzblemanager : MonoBehaviour {
     //este esera el publico 
     public Puzzblestate curretstate;
 
+	public bool victoria = false;
+
 
 	void Start () {
         initialstate = new Puzzblestate(initialvalues);
@@ -19,6 +21,8 @@ public class Puzblemanager : MonoBehaviour {
         initialstate.depth = 0;
 		
 		curretstate = initialstate;
+
+		if(victoria){Debug.Log("Victoria");} 
 	}
 	
 	// Update is called once per frame
@@ -33,22 +37,23 @@ public class Puzblemanager : MonoBehaviour {
 
 	public void action(string a)
 	{
+		Puzzblestate temp = new Puzzblestate();
 		switch (a) 
 		{
 			case "Up":
-				curretstate = curretstate.moveup ();
+				temp = curretstate.moveup ();
 				break;
 
 			case "Down":
-				curretstate = curretstate.movedown ();
+				temp = curretstate.movedown ();
 				break;
 
 			case "Left":
-				curretstate = curretstate.moveleft ();
+				temp = curretstate.moveleft ();
 				break;
 
 			case "Right":
-				curretstate = curretstate.moveright ();
+				temp = curretstate.moveright ();
 				break;
 
 			case "Undo":
@@ -56,5 +61,10 @@ public class Puzblemanager : MonoBehaviour {
 				break;
 		}
 
+		if(temp != null) curretstate = temp;
+
+		victoria = PuzzleUtility.checkState(curretstate);
+
+		if(victoria){Debug.Log("Victoria");}
 	}
 }
