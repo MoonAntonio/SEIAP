@@ -13,6 +13,11 @@ public class BFSClase : MonoBehaviour
 		pm = GetComponent<Puzblemanager>();
 	}
 
+	public void SolucionaElPuzzle()
+	{
+		busquedaPuzzle();
+	}
+
 	public bool busquedaPuzzle()
 	{
 		// Inicializamos el estado
