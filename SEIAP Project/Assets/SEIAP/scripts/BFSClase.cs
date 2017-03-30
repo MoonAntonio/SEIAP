@@ -77,4 +77,58 @@ public class BFSClase : MonoBehaviour
 			cuentaFrame++;
 		}
 	}
+
+	public IEnumerator busquedaPuzzleDFS()
+	{
+		int cuentaFrame = 0;
+
+		// Inicializamos la lista
+		solution = new List<string>();
+		// Inicializamos el estado
+		state = pm.curretstate;
+		
+		// Ajuste
+		state.parent = null;
+		state.action = "Root";
+
+		// Creamos una lista y agregamos el estado
+		Stack<Puzzblestate> frontera = new Stack<Puzzblestate>();
+		frontera.Push(state);
+
+		// Recorremos un while
+		while(frontera.Count > 0)
+		{
+			Puzzblestate nodo = frontera.Pop();
+
+			nodesVisited++;
+
+			if(PuzzleUtility.checkState(nodo))
+			{
+				solution.Clear();
+				while(nodo.parent != null)
+				{
+					solution.Add(nodo.action);
+					nodo = nodo.parent;
+				}
+				solution.Reverse();
+				break;
+			}
+
+			List<Puzzblestate> hijos = nodo.getchils();
+
+			foreach(Puzzblestate hijo in hijos)
+			{
+				frontera.Push(hijo);
+			}
+			
+			if(cuentaFrame >= nodosTime)
+			{
+				cuentaFrame = 0;
+
+				// Esperamos al final del frame
+				yield return new WaitForEndOfFrame();
+			}	
+			cuentaFrame++;
+		}
+	}
 }
