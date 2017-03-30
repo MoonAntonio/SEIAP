@@ -42,6 +42,7 @@ public class BFSClase : MonoBehaviour
 				while(nodo.parent != null)
 				{
 					solution.Add(nodo.action);
+					nodo = nodo.parent;
 				}
 			}
 
