@@ -8,6 +8,8 @@ public class BFSClase : MonoBehaviour
 	public Puzzblestate state;
 	public Puzblemanager pm;
 
+	public List<string> solution;
+
 	private void Start()
 	{
 		pm = GetComponent<Puzblemanager>();
@@ -15,11 +17,13 @@ public class BFSClase : MonoBehaviour
 
 	public void SolucionaElPuzzle()
 	{
-		busquedaPuzzle();
+		StartCoroutine(busquedaPuzzle());
 	}
 
-	public bool busquedaPuzzle()
+	public IEnumerator busquedaPuzzle()
 	{
+		// Inicializamos la lista
+		solution = new List<string>();
 		// Inicializamos el estado
 		state = pm.curretstate;
 
@@ -33,7 +37,13 @@ public class BFSClase : MonoBehaviour
 			Puzzblestate nodo = frontera[0];
 			frontera.RemoveAt(0);
 
-			if(PuzzleUtility.checkState(nodo)) return true;
+			if(PuzzleUtility.checkState(nodo))
+			{
+				while(nodo.parent != null)
+				{
+					solution.Add(nodo.action);
+				}
+			}
 
 			List<Puzzblestate> hijos = nodo.getchils();
 
@@ -41,7 +51,9 @@ public class BFSClase : MonoBehaviour
 			{
 				frontera.Add(hijo);
 			}
+
+			// Esperamos al final del frame
+			yield return new WaitForEndOfFrame();
 		}
-		return false;
 	}
 }
