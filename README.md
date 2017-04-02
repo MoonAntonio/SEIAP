@@ -1,3 +1,9 @@
+[![GitHub issues](https://img.shields.io/github/issues/MoonAntonio/SEIAP.svg)](https://github.com/MoonAntonio/SEIAP/issues)
+[![UnityVersion](https://img.shields.io/badge/Unity-5.6.0f3-orange.svg)](https://unity3d.com/es)
+[![Trello](https://img.shields.io/badge/Trello-OFF-red.svg)](https://github.com/MoonAntonio/SEIAP)
+[![Slack Status](https://moonantonio.herokuapp.com/badge.svg)](https://moonantonio.herokuapp.com/)
+[![GitHub license](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://raw.githubusercontent.com/MoonAntonio/SEIAP/master/LICENSE)
+
 # SEIAP
 Practica para Sistemas expertos IA sobre un puzzle.
 
