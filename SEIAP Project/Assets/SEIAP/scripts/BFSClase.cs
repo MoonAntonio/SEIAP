@@ -12,6 +12,9 @@ public class BFSClase : MonoBehaviour
 
 	// Performance Counter
 	public int nodesVisited = 0;
+	public int fronteraSize = 0;
+	public int exploreSize = 0;
+
 
 	private void Start()
 	{
@@ -76,6 +79,9 @@ public class BFSClase : MonoBehaviour
 			{
 				cuentaFrame = 0;
 
+				// Para el seguimiento visual
+				fronteraSize = frontera.Count;
+				
 				// Esperamos al final del frame
 				yield return new WaitForEndOfFrame();
 			}	
@@ -124,6 +130,8 @@ public class BFSClase : MonoBehaviour
 			// Agrego ese estado para que nos aseguremos de que no se vuelve a explorar
 			estadosExplorados.Add(nodo.state);
 
+			// Agregamos los hijos al reves para que el sistema busque la mejor solucion la primera
+			hijos.Reverse();
 			foreach(Puzzblestate hijo in hijos)
 			{
 				if(!estadosExplorados.Contains(hijo.state))
@@ -134,6 +142,10 @@ public class BFSClase : MonoBehaviour
 			{
 				cuentaFrame = 0;
 
+				// Para el seguimiento visual
+				fronteraSize = frontera.Count;
+				exploreSize = estadosExplorados.Count;
+				
 				// Esperamos al final del frame
 				yield return new WaitForEndOfFrame();
 			}	
