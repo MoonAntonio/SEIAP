@@ -23,6 +23,11 @@ public class BFSClase : MonoBehaviour
 		StartCoroutine(busquedaPuzzle());
 	}
 
+	public void SolucionaElPuzzleProfundidad()
+	{
+		StartCoroutine(busquedaPuzzleDFS());
+	}
+
 	public IEnumerator busquedaPuzzle()
 	{
 		int cuentaFrame = 0;
@@ -94,6 +99,7 @@ public class BFSClase : MonoBehaviour
 		// Creamos una lista y agregamos el estado
 		Stack<Puzzblestate> frontera = new Stack<Puzzblestate>();
 		frontera.Push(state);
+		List<int[]> estadosExplorados = new List<int[]>();
 
 		// Recorremos un while
 		while(frontera.Count > 0)
@@ -115,10 +121,13 @@ public class BFSClase : MonoBehaviour
 			}
 
 			List<Puzzblestate> hijos = nodo.getchils();
+			// Agrego ese estado para que nos aseguremos de que no se vuelve a explorar
+			estadosExplorados.Add(nodo.state);
 
 			foreach(Puzzblestate hijo in hijos)
 			{
-				frontera.Push(hijo);
+				if(!estadosExplorados.Contains(hijo.state))
+					frontera.Push(hijo);
 			}
 			
 			if(cuentaFrame >= nodosTime)
