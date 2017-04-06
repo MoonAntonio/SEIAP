@@ -49,7 +49,6 @@ public class Puzzblestate
         return childs;
     }
 
-
     public Puzzblestate moveup()
     {
         Puzzblestate childNode;
