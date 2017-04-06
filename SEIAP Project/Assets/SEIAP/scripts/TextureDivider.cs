@@ -57,8 +57,6 @@ public class TextureDivider : MonoBehaviour
                     sr.sprite = slices[i];
                 }
             }
-
-        }
-        
+        }    
     }
 }

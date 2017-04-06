@@ -62,6 +62,8 @@ MonoBehaviour:
   solution: []
   nodosTime: 100
   nodesVisited: 0
+  fronteraSize: 0
+  exploreSize: 0
 --- !u!114 &114759316288611534
 MonoBehaviour:
   m_ObjectHideFlags: 1

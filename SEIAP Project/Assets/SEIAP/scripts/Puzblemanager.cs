@@ -67,4 +67,44 @@ public class Puzblemanager : MonoBehaviour {
 
 		if(victoria){Debug.Log("Victoria");}
 	}
+
+	public void Aleatoriedad()
+	{
+		int temp = Random.Range(3,10);
+		Debug.Log("Temp: " + temp);
+
+		for(int n = 0; n < temp; n ++)
+		{
+			int a = Random.Range(0,3);
+			Debug.Log("A: " + a);
+
+			switch(a)
+			{
+				case 0:
+						action("Up");
+						Debug.Log("Accion: Up");
+						break;
+
+				case 1:
+						action("Down");
+						Debug.Log("Accion: Down");
+						break;
+
+				case 2:
+						action("Left");
+						Debug.Log("Accion: Left");
+						break;
+
+				case 3:
+						action("Right");
+						Debug.Log("Accion: Right");
+						break;
+
+				default:
+						action("Up");
+						Debug.Log("Accion: Up");
+						break;
+			}
+		}
+	}
 }
